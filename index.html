@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Iva Admin Dashboard - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-background": "#ffffff",
+                        "on-surface-variant": "#94a3b8",
+                        "surface-dim": "#0a0c10",
+                        "primary-fixed": "#dae2ff",
+                        "on-surface": "#f8fafc",
+                        "background": "#05070B",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#28C4FF",
+                        "on-secondary-container": "#94a3b8",
+                        "surface-container-lowest": "#05070b",
+                        "error-container": "#450a0a",
+                        "outline": "#1e293b",
+                        "on-error-container": "#fecaca",
+                        "on-secondary-fixed": "#191c20",
+                        "on-primary-fixed-variant": "#28C4FF",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#28C4FF",
+                        "surface-container-high": "#0f172a",
+                        "surface-container": "#0a0c12",
+                        "error": "#ef4444",
+                        "tertiary": "#003043",
+                        "secondary-container": "#1e293b",
+                        "tertiary-fixed": "#c2e8ff",
+                        "on-primary-container": "#28C4FF",
+                        "surface-container-highest": "#1e293b",
+                        "primary-fixed-dim": "#b1c5ff",
+                        "outline-variant": "#334155",
+                        "secondary-fixed": "#1e293b",
+                        "on-tertiary-fixed": "#001e2b",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#080a0f",
+                        "surface-bright": "#0f172a",
+                        "on-tertiary-fixed-variant": "#004d67",
+                        "surface-variant": "#1e293b",
+                        "tertiary-container": "#004861",
+                        "secondary-fixed-dim": "#c5c6cd",
+                        "inverse-primary": "#b1c5ff",
+                        "on-primary-fixed": "#ffffff",
+                        "primary": "#0A3D91",
+                        "inverse-surface": "#f8fafc",
+                        "secondary": "#5c5e64",
+                        "primary-container": "#0A3D91",
+                        "surface": "#05070B",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#05070b",
+                        "on-secondary-fixed-variant": "#44474c",
+                        "surface-tint": "#28C4FF"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "2xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #05070B; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Premium 3D Effects */
+        .glass-card {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.4) 0%, rgba(5, 7, 11, 0.6) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+        }
+        
+        .elevated-3d {
+            box-shadow: 
+                0 10px 30px -10px rgba(0, 0, 0, 0.7),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .inner-glow-cyan {
+            box-shadow: inset 0 0 15px rgba(40, 196, 255, 0.1);
+        }
+
+        .premium-sidebar {
+            background: linear-gradient(180deg, #0A0C12 0%, #05070B 100%);
+            border-right: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-item-active {
+            background: linear-gradient(90deg, #0A3D91 0%, rgba(10, 61, 145, 0.4) 100%);
+            border-left: 3px solid #28C4FF;
+            box-shadow: 0 4px 12px rgba(10, 61, 145, 0.3);
+        }
+
+        .kpi-card {
+            background: linear-gradient(145deg, #0f172a 0%, #05070b 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(40, 196, 255, 0.2);
+            border-color: rgba(40, 196, 255, 0.2);
+        }
+
+        .chart-glow {
+            filter: drop-shadow(0 0 8px rgba(40, 196, 255, 0.4));
+        }
+
+        .btn-3d {
+            background: linear-gradient(180deg, #0A3D91 0%, #062860 100%);
+            box-shadow: 
+                0 4px 0 #041a40,
+                0 8px 16px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.1s;
+        }
+
+        .btn-3d:active {
+            transform: translateY(2px);
+            box-shadow: 
+                0 2px 0 #041a40,
+                0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface transition-colors duration-300 antialiased">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full z-40 flex flex-col premium-sidebar w-64">
+<div class="p-8 flex items-center gap-3">
+<div class="w-10 h-10 bg-[#28C4FF] rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(40,196,255,0.3)]">
+<span class="material-symbols-outlined text-[#05070B]" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div>
+<h1 class="text-2xl font-black text-white tracking-tighter">Iva AI</h1>
+<p class="text-[10px] font-manrope font-bold tracking-widest uppercase text-[#28C4FF]/60">Neural Network</p>
+</div>
+</div>
+<nav class="flex-1 mt-4 px-3 space-y-1.5">
+<!-- Active: Home -->
+<a class="flex items-center gap-3 px-4 py-3 nav-item-active text-white rounded-lg transition-all duration-200 font-manrope text-xs font-bold tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined text-[#28C4FF]" data-icon="home">home</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 font-manrope text-xs font-bold tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span>Conversations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 font-manrope text-xs font-bold tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+<span>Onboarding</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 font-manrope text-xs font-bold tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span>Flows</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 font-manrope text-xs font-bold tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span>Scheduling</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 font-manrope text-xs font-bold tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="extension">extension</span>
+<span>Integrations</span>
+</a>
+<div class="pt-4 pb-2 px-4">
+<p class="text-[10px] font-bold text-slate-600 uppercase tracking-widest">Analytics</p>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 font-manrope text-xs font-bold tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span>Growth</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 font-manrope text-xs font-bold tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="p-4 pb-8">
+<button class="w-full btn-3d text-[#28C4FF] py-3.5 rounded-xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+            New Campaign
+        </button>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 left-64 flex justify-between items-center px-8 z-30 h-20 bg-background/80 backdrop-blur-xl border-b border-white/5">
+<div class="flex items-center gap-10">
+<h2 class="text-lg font-black text-white">XYZ ATTORNEYS</h2>
+<div class="relative w-80 group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
+<input class="w-full bg-[#0A0C12] border border-white/5 rounded-xl py-2.5 pl-12 pr-4 text-xs text-white focus:outline-none focus:border-[#28C4FF]/40 transition-all focus:shadow-[0_0_20px_rgba(40,196,255,0.1)]" placeholder="SEARCH INSIGHTS..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2.5 px-4 py-1.5 bg-[#28C4FF]/5 border border-[#28C4FF]/20 rounded-full">
+<div class="w-1.5 h-1.5 bg-[#28C4FF] rounded-full animate-pulse shadow-[0_0_8px_#28C4FF]"></div>
+<span class="text-[10px] font-black text-[#28C4FF] uppercase tracking-widest">IVA ACTIVE</span>
+</div>
+<div class="flex gap-4 items-center border-l border-white/10 pl-6">
+<button class="text-slate-400 hover:text-[#28C4FF] transition-colors">
+<span class="material-symbols-outlined">light_mode</span>
+</button>
+<button class="text-slate-400 hover:text-[#28C4FF] transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0.5 right-0.5 w-1.5 h-1.5 bg-error rounded-full shadow-[0_0_8px_rgba(239,68,68,0.6)]"></span>
+</button>
+<div class="w-9 h-9 rounded-xl overflow-hidden border border-white/10 shadow-lg ml-2">
+<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCZE5D_joeJ53J-tSyot2n0kWg9V5a-yPzzgQAXnQg8ntMutIAAUaSjC1aEgv7quo7XHHgWUlrqFl-lsyZziq9HnwUAbbmKpsM1sFHNHGL-E0nyqeijxvOtY3ssEBSzjMD5vTwb1axAKrBQsFhn7Cr2BLlF_jxDPmG16SLhzY_hmDVzBbDhoKMT4WPBZ-RE_jJjHQjyK5d2UMkGbYovUgqjFSc9-D6nkHxwE-D_eFMf_Z4yeVQOBnTpNN7RkcInqMcXfktnGguMMUi"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 pt-24 p-10 min-h-screen grid grid-cols-12 gap-10">
+<!-- Center Canvas -->
+<div class="col-span-12 lg:col-span-9 space-y-10">
+<!-- Welcome Header -->
+<section class="flex flex-col gap-2">
+<h3 class="text-5xl font-black text-white tracking-tight">Good morning, Counsel.</h3>
+<p class="text-slate-400 max-w-xl text-sm font-medium leading-relaxed">System diagnostics confirm 142 successful interactions. Conversion velocity has increased by <span class="text-[#28C4FF] font-bold">4.2%</span> over the standard baseline.</p>
+</section>
+<!-- KPI Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- KPI Card 1 -->
+<div class="kpi-card glass-card p-6 rounded-2xl elevated-3d relative overflow-hidden group">
+<div class="absolute -top-4 -right-4 w-20 h-20 bg-[#28C4FF]/5 rounded-full blur-2xl group-hover:bg-[#28C4FF]/10 transition-colors"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="p-2.5 bg-[#28C4FF]/10 rounded-xl border border-[#28C4FF]/20">
+<span class="material-symbols-outlined text-[#28C4FF] text-xl">group</span>
+</div>
+<span class="text-[10px] font-black text-[#28C4FF] uppercase tracking-widest">+12%</span>
+</div>
+<div>
+<p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Leads Captured</p>
+<h4 class="text-3xl font-black text-white">1,284</h4>
+</div>
+</div>
+<!-- KPI Card 2 -->
+<div class="kpi-card glass-card p-6 rounded-2xl elevated-3d relative overflow-hidden group">
+<div class="absolute -top-4 -right-4 w-20 h-20 bg-[#28C4FF]/5 rounded-full blur-2xl"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="p-2.5 bg-[#28C4FF]/10 rounded-xl border border-[#28C4FF]/20">
+<span class="material-symbols-outlined text-[#28C4FF] text-xl">calendar_month</span>
+</div>
+<span class="text-[10px] font-black text-[#28C4FF] uppercase tracking-widest">+8%</span>
+</div>
+<div>
+<p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Consultations</p>
+<h4 class="text-3xl font-black text-white">342</h4>
+</div>
+</div>
+<!-- KPI Card 3 -->
+<div class="kpi-card glass-card p-6 rounded-2xl elevated-3d relative overflow-hidden group border-l-2 border-[#28C4FF]/40">
+<div class="absolute -top-4 -right-4 w-20 h-20 bg-[#28C4FF]/5 rounded-full blur-2xl"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="p-2.5 bg-[#28C4FF]/10 rounded-xl border border-[#28C4FF]/20 shadow-[0_0_15px_rgba(40,196,255,0.1)]">
+<span class="material-symbols-outlined text-[#28C4FF] text-xl">query_stats</span>
+</div>
+<span class="text-[10px] font-black text-[#28C4FF] uppercase tracking-widest">Optimal</span>
+</div>
+<div>
+<p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Lead-to-Booking</p>
+<h4 class="text-3xl font-black text-white">18.5%</h4>
+</div>
+</div>
+<!-- KPI Card 4 -->
+<div class="kpi-card glass-card p-6 rounded-2xl elevated-3d relative overflow-hidden group">
+<div class="absolute -top-4 -right-4 w-20 h-20 bg-emerald-500/5 rounded-full blur-2xl"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="p-2.5 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
+<span class="material-symbols-outlined text-emerald-400 text-xl">timer</span>
+</div>
+<span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest">-40s</span>
+</div>
+<div>
+<p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Response Time</p>
+<h4 class="text-3xl font-black text-white">1.2m</h4>
+</div>
+</div>
+</section>
+<!-- Main Visual Area: Trends & Actions -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-10">
+<!-- Trend Chart Placeholder -->
+<div class="xl:col-span-2 glass-card p-8 rounded-3xl elevated-3d h-[450px] flex flex-col relative overflow-hidden">
+<div class="flex justify-between items-center mb-10 z-10">
+<div>
+<h5 class="text-lg font-black text-white uppercase tracking-wider">Conversion Matrix</h5>
+<p class="text-[10px] text-slate-500 font-bold tracking-widest">REAL-TIME ANALYTICS FEED</p>
+</div>
+<div class="flex p-1 bg-[#05070B] border border-white/5 rounded-xl shadow-inner">
+<button class="px-5 py-2 bg-[#28C4FF] text-[#05070B] rounded-lg text-[10px] font-black uppercase shadow-lg">7 Days</button>
+<button class="px-5 py-2 text-slate-500 hover:text-white rounded-lg text-[10px] font-black uppercase transition-colors">30 Days</button>
+</div>
+</div>
+<div class="flex-1 flex items-end gap-5 relative z-10 chart-glow pb-4">
+<!-- Abstract Chart Bars -->
+<div class="flex-1 bg-gradient-to-t from-[#0A3D91] to-[#28C4FF] rounded-xl h-[40%] transition-all duration-700 hover:brightness-125 cursor-pointer shadow-[0_0_20px_rgba(10,61,145,0.2)]"></div>
+<div class="flex-1 bg-gradient-to-t from-[#0A3D91] to-[#28C4FF] rounded-xl h-[60%] transition-all duration-700 hover:brightness-125 cursor-pointer shadow-[0_0_20px_rgba(10,61,145,0.2)]"></div>
+<div class="flex-1 bg-gradient-to-t from-[#0A3D91] to-[#28C4FF] rounded-xl h-[45%] transition-all duration-700 hover:brightness-125 cursor-pointer shadow-[0_0_20px_rgba(10,61,145,0.2)]"></div>
+<div class="flex-1 bg-gradient-to-t from-[#0A3D91] to-[#28C4FF] rounded-xl h-[85%] transition-all duration-700 hover:brightness-125 cursor-pointer shadow-[0_0_20px_rgba(10,61,145,0.2)] border-t border-[#28C4FF]/40"></div>
+<div class="flex-1 bg-gradient-to-t from-[#0A3D91] to-[#28C4FF] rounded-xl h-[70%] transition-all duration-700 hover:brightness-125 cursor-pointer shadow-[0_0_20px_rgba(10,61,145,0.2)]"></div>
+<div class="flex-1 bg-gradient-to-t from-[#0A3D91] to-[#28C4FF] rounded-xl h-[95%] transition-all duration-700 hover:brightness-125 cursor-pointer shadow-[0_0_20px_rgba(10,61,145,0.2)] border-t border-[#28C4FF]/60"></div>
+<div class="flex-1 bg-gradient-to-t from-[#0A3D91] to-[#28C4FF] rounded-xl h-[80%] transition-all duration-700 hover:brightness-125 cursor-pointer shadow-[0_0_20px_rgba(10,61,145,0.2)]"></div>
+</div>
+<!-- Background Grid -->
+<div class="absolute inset-0 grid grid-cols-1 grid-rows-4 pointer-events-none opacity-5 px-8 pt-24 pb-12">
+<div class="border-t border-white"></div>
+<div class="border-t border-white"></div>
+<div class="border-t border-white"></div>
+<div class="border-t border-white"></div>
+</div>
+</div>
+<!-- Quick Actions Stack -->
+<div class="space-y-6">
+<h5 class="text-xs font-black text-[#28C4FF] uppercase tracking-[0.2em] px-1">System Control</h5>
+<button class="w-full flex items-center justify-between p-5 bg-[#0A0C12] border border-white/5 rounded-2xl elevated-3d hover:border-[#28C4FF]/40 transition-all group hover:-translate-y-1">
+<div class="flex items-center gap-5">
+<div class="w-10 h-10 bg-[#28C4FF]/10 rounded-xl flex items-center justify-center border border-[#28C4FF]/20 group-hover:bg-[#28C4FF]/20 transition-all">
+<span class="material-symbols-outlined text-[#28C4FF] text-xl">play_arrow</span>
+</div>
+<span class="font-black text-sm text-white tracking-wide">TEST NEURAL IVA</span>
+</div>
+<span class="material-symbols-outlined text-slate-600 group-hover:text-white transition-colors">arrow_forward_ios</span>
+</button>
+<button class="w-full flex items-center justify-between p-5 bg-[#0A0C12] border border-white/5 rounded-2xl elevated-3d hover:border-[#28C4FF]/40 transition-all group hover:-translate-y-1">
+<div class="flex items-center gap-5">
+<div class="w-10 h-10 bg-[#28C4FF]/10 rounded-xl flex items-center justify-center border border-[#28C4FF]/20 group-hover:bg-[#28C4FF]/20 transition-all">
+<span class="material-symbols-outlined text-[#28C4FF] text-xl">query_stats</span>
+</div>
+<span class="font-black text-sm text-white tracking-wide">SYNC DATA HUB</span>
+</div>
+<span class="material-symbols-outlined text-slate-600 group-hover:text-white transition-colors">arrow_forward_ios</span>
+</button>
+<button class="w-full flex items-center justify-between p-5 bg-[#0A0C12] border border-white/5 rounded-2xl elevated-3d hover:border-[#28C4FF]/40 transition-all group hover:-translate-y-1">
+<div class="flex items-center gap-5">
+<div class="w-10 h-10 bg-[#28C4FF]/10 rounded-xl flex items-center justify-center border border-[#28C4FF]/20 group-hover:bg-[#28C4FF]/20 transition-all">
+<span class="material-symbols-outlined text-[#28C4FF] text-xl">tune</span>
+</div>
+<span class="font-black text-sm text-white tracking-wide">MODAL SETTINGS</span>
+</div>
+<span class="material-symbols-outlined text-slate-600 group-hover:text-white transition-colors">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+<!-- Get Started Checklist -->
+<section class="glass-card p-10 rounded-3xl elevated-3d relative overflow-hidden">
+<div class="absolute top-0 right-0 p-10 opacity-10 rotate-12 pointer-events-none">
+<span class="material-symbols-outlined text-[160px] text-[#28C4FF]">verified</span>
+</div>
+<h5 class="text-xl font-black text-white mb-8 tracking-tight">Launch Sequence Checklist</h5>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6">
+<div class="flex items-center gap-5 py-4 border-b border-white/5 group cursor-pointer">
+<div class="w-6 h-6 rounded-full border border-[#28C4FF] flex items-center justify-center bg-[#28C4FF]/20 shadow-[0_0_10px_rgba(40,196,255,0.3)]">
+<span class="material-symbols-outlined text-[#28C4FF] text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="text-sm font-bold text-white group-hover:text-[#28C4FF] transition-colors">Register business legalities</span>
+</div>
+<div class="flex items-center gap-5 py-4 border-b border-white/5 opacity-40 group cursor-pointer hover:opacity-100 transition-opacity">
+<div class="w-6 h-6 rounded-full border border-slate-700 flex items-center justify-center"></div>
+<span class="text-sm font-bold text-slate-300">Synchronize cloud calendars</span>
+</div>
+<div class="flex items-center gap-5 py-4 border-b border-white/5 group cursor-pointer">
+<div class="w-6 h-6 rounded-full border border-[#28C4FF] flex items-center justify-center bg-[#28C4FF]/20 shadow-[0_0_10px_rgba(40,196,255,0.3)]">
+<span class="material-symbols-outlined text-[#28C4FF] text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="text-sm font-bold text-white group-hover:text-[#28C4FF] transition-colors">Configure Iva's vocal engine</span>
+</div>
+<div class="flex items-center gap-5 py-4 border-b border-white/5 opacity-40 group cursor-pointer hover:opacity-100 transition-opacity">
+<div class="w-6 h-6 rounded-full border border-slate-700 flex items-center justify-center"></div>
+<span class="text-sm font-bold text-slate-300">Embed intelligence widget</span>
+</div>
+<div class="flex items-center gap-5 py-4 border-b border-white/5 opacity-40 group cursor-pointer hover:opacity-100 transition-opacity">
+<div class="w-6 h-6 rounded-full border border-slate-700 flex items-center justify-center"></div>
+<span class="text-sm font-bold text-slate-300">Link CRM data streams</span>
+</div>
+<div class="flex items-center gap-5 py-4 border-b border-white/5 opacity-40 group cursor-pointer hover:opacity-100 transition-opacity">
+<div class="w-6 h-6 rounded-full border border-slate-700 flex items-center justify-center"></div>
+<span class="text-sm font-bold text-slate-300">Ingest training corpora</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Utility Panel -->
+<aside class="col-span-12 lg:col-span-3 space-y-10 border-l border-white/5 pl-10">
+<!-- Growth Recommendations -->
+<section class="space-y-6">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[#28C4FF] text-lg animate-pulse">auto_awesome</span>
+<h6 class="text-[10px] font-black uppercase tracking-[0.3em] text-[#28C4FF]">SYSTEM ADVISORY</h6>
+</div>
+<div class="space-y-5">
+<!-- Recommendation 1 -->
+<div class="bg-[#0A0C12] border border-[#28C4FF]/20 p-5 rounded-2xl elevated-3d relative group overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-[#28C4FF]"></div>
+<p class="text-[11px] font-black text-white uppercase tracking-widest mb-2">Peak Latency Detected</p>
+<p class="text-[11px] text-slate-400 leading-relaxed font-medium">Global interactions spike between 19:00 - 21:00 UTC. Optimize resource allocation for these nodes.</p>
+<button class="mt-4 text-[10px] font-black text-[#28C4FF] uppercase tracking-widest hover:brightness-125 flex items-center gap-1">
+                        EXECUTE PATCH <span class="material-symbols-outlined text-[10px]">bolt</span>
+</button>
+</div>
+<!-- Recommendation 2 -->
+<div class="bg-[#0A0C12] border border-white/5 p-5 rounded-2xl elevated-3d relative group">
+<div class="absolute top-0 left-0 w-1 h-full bg-slate-700 group-hover:bg-[#28C4FF] transition-colors"></div>
+<p class="text-[11px] font-black text-white uppercase tracking-widest mb-2">Knowledge Gap</p>
+<p class="text-[11px] text-slate-400 leading-relaxed font-medium">Neural engine requested data on 'Asset Protection' 12 times. Database is currently empty.</p>
+<button class="mt-4 text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-white flex items-center gap-1">
+                        UPLOAD DOCS <span class="material-symbols-outlined text-[10px]">upload_file</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Live Config Preview -->
+<section class="space-y-4">
+<h6 class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 px-1">LIVE TELEMETRY</h6>
+<div class="bg-[#05070B] border border-white/5 rounded-2xl p-6 elevated-3d inner-glow-cyan font-mono text-[11px] text-[#28C4FF] space-y-2.5 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 opacity-20">
+<span class="material-symbols-outlined text-[40px]">terminal</span>
+</div>
+<div class="flex justify-between border-b border-white/5 pb-1.5">
+<span class="text-slate-500">ENGINE_MODE:</span>
+<span class="font-bold">"PREMIUM_CONCIERGE"</span>
+</div>
+<div class="flex justify-between border-b border-white/5 pb-1.5">
+<span class="text-slate-500">VOICE_SYNTH:</span>
+<span class="font-bold text-white">"AURORA_V4"</span>
+</div>
+<div class="flex justify-between border-b border-white/5 pb-1.5">
+<span class="text-slate-500">AVG_LATENCY:</span>
+<span class="font-bold">"218MS"</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-500">ACTIVE_CORES:</span>
+<span class="font-bold text-white">12/12</span>
+</div>
+<div class="mt-6 pt-4 border-t border-[#28C4FF]/10 flex items-center justify-center gap-3">
+<div class="w-1.5 h-1.5 bg-[#28C4FF] rounded-full animate-ping shadow-[0_0_10px_#28C4FF]"></div>
+<span class="italic text-[10px] text-slate-400 font-manrope">WATCHING LIVE EVENTS...</span>
+</div>
+</div>
+</section>
+<!-- Mini Map/Location Placeholder -->
+<div class="rounded-2xl overflow-hidden h-44 relative group cursor-crosshair border border-white/10 elevated-3d shadow-2xl">
+<img alt="Abstract map" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125 grayscale brightness-50 contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC621lirPIieYFq6J5f94vq1smnNflijlWPFV13w3uuGd2fvORyHRPQHDzyrsrz972Enm-baLAV7aaarkbgsqGTbaARM1hb86tMQ96C-76YcVbiotwVYQ-J9muuORppczEJmaQvKjM_W74bnOmw4DjIkJ1GjePX9IX-onQ9s7l_t-hzj4NMYZyJo8bnmiJTyto1Fh7dwJG1RKoDLKlA6de8C1fDBFbq3SstCuizSAE-iOK32v2alwHaR0EhI_vXrsZ2gg4OgICJsSf7"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#05070B] via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<div class="flex items-center gap-2 mb-1">
+<div class="w-2 h-2 bg-red-500 rounded-full animate-pulse shadow-[0_0_8px_red]"></div>
+<p class="text-[10px] font-black uppercase tracking-widest text-[#28C4FF]">NODE: MANHATTAN HUB</p>
+</div>
+<p class="text-[9px] text-slate-500 font-bold tracking-widest uppercase">Traffic Intensity: HIGH</p>
+</div>
+</div>
+</aside>
+</main>
+</body></html>
